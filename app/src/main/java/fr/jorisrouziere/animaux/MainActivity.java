@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.jorisrouziere.animaux.adapters.AnimalAdapter;
+import fr.jorisrouziere.animaux.api.API;
 import fr.jorisrouziere.animaux.model.Animal;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        API.appel(getApplicationContext());
 
         List<Animal> animaux = new ArrayList<>();
 
