@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread(() -> {
             API api = API.getInstance();
             try {
-                List<Animal> animaux =  api.getAnimal();
+                List<Animal> animaux =  api.getAnimaux();
                 System.out.println(animaux);
             } catch (API.ApiErrorException | IOException e) {
                 e.printStackTrace();

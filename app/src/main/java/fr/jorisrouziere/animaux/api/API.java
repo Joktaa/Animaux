@@ -5,6 +5,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -68,7 +70,7 @@ public class API {
 
     private void handleApiError(Response response) throws ApiErrorException, IOException {
         if (response.code() >= HttpsURLConnection.HTTP_BAD_REQUEST) {
-            throw new ApiErrorException(response.body().string());
+            throw new ApiErrorException(Objects.requireNonNull(response.body()).string());
         }
     }
 
@@ -77,7 +79,7 @@ public class API {
             response.close();
             return new ArrayList<>();
         } else {
-            throw new ApiErrorException(response.body().string());
+            throw new ApiErrorException(Objects.requireNonNull(response.body()).string());
         }
     }
 
@@ -87,13 +89,23 @@ public class API {
         }
     }
 
-    public List<Animal> getAnimal() throws ApiErrorException, IOException {
+    public List<Animal> getAnimaux() throws ApiErrorException, IOException {
         Response listResponse = getSynchronous("/animaux");
 
         if (HttpsURLConnection.HTTP_OK == listResponse.code()) {
             return JsonIOUtils.GSON.fromJson(listResponse.body().string(), new TypeToken<List<Animal>>() {}.getType());
         } else {
             return (List<Animal>) handleApiErrorList(listResponse);
+        }
+    }
+
+    public Animal getAnimal(int id) throws ApiErrorException, IOException {
+        Response response = getSynchronous(String.format(Locale.FRANCE, "animal/%d", id));
+
+        if (HttpsURLConnection.HTTP_OK == response.code()) {
+            return JsonIOUtils.GSON.fromJson(response.body().string(), Animal.class);
+        } else {
+            return (Animal) handleApiErrorList(response);
         }
     }
 }
