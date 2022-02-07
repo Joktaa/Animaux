@@ -5,6 +5,7 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,10 +20,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        API.appel(getApplicationContext());
+        // Connexion
+        new Thread(() -> {
+            API api = API.getInstance();
+            try {
+                List<Animal> animaux =  api.getAnimal();
+                System.out.println(animaux);
+            } catch (API.ApiErrorException | IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
 
         List<Animal> animaux = new ArrayList<>();
-
         animaux.add(new Animal());
         animaux.add(new Animal());
         animaux.add(new Animal());
@@ -30,5 +40,7 @@ public class MainActivity extends AppCompatActivity {
         ListView animalListView = findViewById(R.id.animal_listView);
         AnimalAdapter animalAdapter = new AnimalAdapter(getApplicationContext(), getSupportFragmentManager(), animaux);
         animalListView.setAdapter(animalAdapter);
+
+
     }
 }

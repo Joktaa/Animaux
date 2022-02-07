@@ -1,43 +1,99 @@
 package fr.jorisrouziere.animaux.api;
 
-import android.content.Context;
-import android.util.Log;
-import android.widget.Toast;
+import com.google.gson.reflect.TypeToken;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import javax.net.ssl.HttpsURLConnection;
+
+import fr.jorisrouziere.animaux.Utils.JsonIOUtils;
+import fr.jorisrouziere.animaux.model.Animal;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class API {
 
-    public static void appel(Context context) {
-        RequestQueue mRequestQueue;
-        StringRequest mStringRequest;
-        String url = "http://10.0.2.2:8888/api/animaux";
+    private static final String BASE_URL = "http://10.0.2.2:8888/api";
+    private static final MediaType JSON_MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
 
-        //RequestQueue initialized
-        mRequestQueue = Volley.newRequestQueue(context);
+    private static API sAPI;
+    private final OkHttpClient mHttpClient;
 
-        //String Request initialized
-        mStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
+    private API() {
+        mHttpClient = new OkHttpClient
+                .Builder()
+                .connectTimeout(10, TimeUnit.SECONDS)
+                .writeTimeout(20, TimeUnit.SECONDS)
+                .readTimeout(40, TimeUnit.SECONDS)
+                .retryOnConnectionFailure(true)
+                .build();
+    }
 
-                Toast.makeText(context,"Response :" + response.toString(), Toast.LENGTH_LONG).show();//display the response on screen
+    public static API getInstance() {
+        if (sAPI == null) {
+            sAPI = new API();
+        }
+        return sAPI;
+    }
 
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
+    private Response getSynchronous(String path) throws IOException {
+        return mHttpClient.newCall(buildGet(path)).execute();
+    }
 
-                Log.i("-------------------------------------------------------------","Error :" + error.toString());
-            }
-        });
+    private void postAsynchronous(String path, Callback callback) {
+        mHttpClient.newCall(buildPost(path)).enqueue(callback);
+    }
 
-        mRequestQueue.add(mStringRequest);
+    private Request buildGet(String path) {
+        return new Request
+                .Builder()
+                .url(String.format("%s%s", BASE_URL, path))
+                .build();
+    }
+
+    private Request buildPost(String path) {
+        return new Request
+                .Builder()
+                .url(String.format("%s%s", BASE_URL, path))
+                .post(RequestBody.create("", JSON_MEDIA_TYPE))
+                .build();
+    }
+
+    private void handleApiError(Response response) throws ApiErrorException, IOException {
+        if (response.code() >= HttpsURLConnection.HTTP_BAD_REQUEST) {
+            throw new ApiErrorException(response.body().string());
+        }
+    }
+
+    private List<?> handleApiErrorList(Response response) throws ApiErrorException, IOException {
+        if (HttpsURLConnection.HTTP_NOT_FOUND == response.code()) {
+            response.close();
+            return new ArrayList<>();
+        } else {
+            throw new ApiErrorException(response.body().string());
+        }
+    }
+
+    public static class ApiErrorException extends Exception {
+        public ApiErrorException(String message) {
+            super(message);
+        }
+    }
+
+    public List<Animal> getAnimal() throws ApiErrorException, IOException {
+        Response listResponse = getSynchronous("/animaux");
+
+        if (HttpsURLConnection.HTTP_OK == listResponse.code()) {
+            return JsonIOUtils.GSON.fromJson(listResponse.body().string(), new TypeToken<List<Animal>>() {}.getType());
+        } else {
+            return (List<Animal>) handleApiErrorList(listResponse);
+        }
     }
 }
