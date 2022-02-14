@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Animaux</string>
+
+    // Fiche animal
+    <string name="fiche_genre">Genre :</string>
+    <string name="fiche_ordre">Ordre :</string>
+    <string name="fiche_sous_embranchements">Sous_embranchements :</string>
+    <string name="fiche_embranchement">Embranchement :</string>
+    <string name="fiche_espece">Espèce :</string>
+    <string name="fiche_uicn">UICN :</string>
+    <string name="fiche_physiques">Physiques :</string>
+    <string name="fiche_sexes">Sexes :</string>
+    <string name="fiche_vies">Vies :</string>
+    <string name="fiche_reproductions">Reproductions :</string>
+    <string name="fiche_geographie">Geographie :</string>
+    <string name="fiche_content_description_image">Image de l\'animal</string>
 </resources>
