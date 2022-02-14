@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentManager;
 import java.util.List;
 
 import fr.jorisrouziere.animaux.R;
-import fr.jorisrouziere.animaux.model.Animal;
+import fr.jorisrouziere.animaux.Room.models.Animal;
 
 public class AnimalAdapter extends BaseAdapter {
 
@@ -47,7 +47,7 @@ public class AnimalAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return 0; // TODO : item id
+        return animaux.get(position).getA_id();
     }
 
     @Override
@@ -67,7 +67,7 @@ public class AnimalAdapter extends BaseAdapter {
         }
 
         // TODO : set by animal
-        // viewHolder.title.setText(animal.getNom_commun());
+        viewHolder.title.setText(animal.getNom_commun());
         // viewHolder.image
 
         return view;

@@ -11,8 +11,8 @@ import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import fr.jorisrouziere.animaux.Room.models.Animal;
 import fr.jorisrouziere.animaux.Utils.JsonIOUtils;
-import fr.jorisrouziere.animaux.model.Animal;
 import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
