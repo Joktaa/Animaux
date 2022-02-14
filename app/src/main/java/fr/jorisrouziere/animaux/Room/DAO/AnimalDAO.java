@@ -16,7 +16,11 @@ public interface AnimalDAO {
     void insertAll(List<Animal> artefactList);
 
     @Query("SELECT * FROM animal")
-    LiveData<List<Animal>> getAnimaux();
+    LiveData<List<Animal>> getAnimals();
+
+    @Query("SELECT * FROM animal " +
+            "WHERE a_id = :id")
+    LiveData<Animal> getAnimalById(Long id);
 
     @Query("DELETE FROM animal")
     void deleteAll();

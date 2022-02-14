@@ -22,8 +22,12 @@ public class Repository {
         AnimalDatabase.DATABASE_WRITE_EXECUTOR.execute(() -> mAnimalDAO.insertAll(animalList));
     }
 
-    public LiveData<List<Animal>> getAnimaux() {
-        return mAnimalDAO.getAnimaux();
+    public LiveData<List<Animal>> getAnimals() {
+        return mAnimalDAO.getAnimals();
+    }
+
+    public LiveData<Animal> getAnimalById(Long id) {
+        return mAnimalDAO.getAnimalById(id);
     }
 
     public void reset() {

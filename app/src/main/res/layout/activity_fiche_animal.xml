@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.AfficheAnimal">
+    tools:context=".activity.FicheAnimal">
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -34,7 +34,6 @@
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="Description"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewOrdre" />
@@ -45,7 +44,7 @@
                 android:layout_height="31dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:text="Ordre :"
+                android:text="@string/fiche_ordre"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -58,7 +57,6 @@
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="Description"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewSousEmbranchement" />
@@ -69,7 +67,7 @@
                 android:layout_height="31dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:text="Sous_embranchements :"
+                android:text="@string/fiche_sous_embranchements"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -82,7 +80,6 @@
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="Description"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewEmbranchement" />
@@ -93,7 +90,7 @@
                 android:layout_height="31dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:text="Embranchement :"
+                android:text="@string/fiche_embranchement"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -106,7 +103,6 @@
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="Description"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewEspece" />
@@ -117,7 +113,7 @@
                 android:layout_height="31dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:text="Espèce :"
+                android:text="@string/fiche_espece"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -130,7 +126,6 @@
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="Description"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewGenre" />
@@ -141,12 +136,12 @@
                 android:layout_height="31dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:text="Genre :"
+                android:text="@string/fiche_genre"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionNomCommun" />
+                app:layout_constraintTop_toBottomOf="@+id/textNomAnimal" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
@@ -163,7 +158,8 @@
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/coelacanthe" />
+                    app:srcCompat="@drawable/coelacanthe"
+                    android:contentDescription="@string/fiche_content_description_image" />
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -174,7 +170,6 @@
                 android:layout_marginTop="28dp"
                 android:layout_marginEnd="178dp"
                 android:gravity="center"
-                android:text="Nom animal"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -185,36 +180,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
             <TextView
-                android:id="@+id/textViewNomCommun"
-                android:layout_width="143dp"
-                android:layout_height="31dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="28dp"
-                android:text="Nom Commun :"
-                android:textAlignment="textStart"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textNomAnimal" />
-
-            <TextView
-                android:id="@+id/descpritionNomCommun"
-                android:layout_width="392dp"
-                android:layout_height="67dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="Description"
-                android:textAlignment="textStart"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewNomCommun" />
-
-            <TextView
                 android:id="@+id/textViewUicn"
                 android:layout_width="143dp"
                 android:layout_height="31dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
-                android:text="Uicn :"
+                android:text="@string/fiche_uicn"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -227,7 +198,6 @@
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="Description"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewUicn" />
@@ -238,7 +208,7 @@
                 android:layout_height="31dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
-                android:text="Physiques :"
+                android:text="@string/fiche_physiques"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -251,7 +221,6 @@
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="Description"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewPhysiques" />
@@ -262,7 +231,7 @@
                 android:layout_height="31dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
-                android:text="Sexes :"
+                android:text="@string/fiche_sexes"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -275,7 +244,6 @@
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="Description"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewSexes" />
@@ -286,7 +254,7 @@
                 android:layout_height="31dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
-                android:text="Vies :"
+                android:text="@string/fiche_vies"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -299,7 +267,6 @@
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="Description"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewVies" />
@@ -310,7 +277,7 @@
                 android:layout_height="31dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
-                android:text="Reproductions :"
+                android:text="@string/fiche_reproductions"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -323,7 +290,6 @@
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="Description"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewReproductions" />
@@ -334,7 +300,7 @@
                 android:layout_height="31dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
-                android:text="Geographie :"
+                android:text="@string/fiche_geographie"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -347,7 +313,6 @@
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="Description"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewGeographie" />
