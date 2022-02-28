@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Animaux">
         <activity android:name=".activity.MainActivity"/>
-        <activity android:name=".activity.FicheAnimal"/>
         <activity
             android:name=".activity.SplashScreenActivity"
             android:exported="true">
