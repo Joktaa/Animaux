@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,6 +43,15 @@ public class FicheAnimalFragment extends Fragment {
         Repository repository = new Repository(getContext());
         repository.getAnimalById(id).observe(getViewLifecycleOwner(), (animal -> {
             String texteAAfficher;
+
+            String uri = "@drawable/";
+            String nomImage = animal.getImage();
+            //TODO: Penser à enlever les replaces une fois les donnees dans la bdd sont correctes
+            nomImage = nomImage.replace(".png", "");
+            nomImage = nomImage.replace(".jpg", "");
+            ImageView imageAnimal = view.findViewById(R.id.imageAnimal);
+            int resID = getResources().getIdentifier(uri + nomImage, "drawable", getActivity().getPackageName());
+            imageAnimal.setImageResource(resID);
 
             TextView name = view.findViewById(R.id.textNomAnimal);
             name.setText(animal.getNom_commun());

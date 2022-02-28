@@ -17,6 +17,7 @@ public class Animal {
     private String sous_embranchement;
     private String ordre;
     private String uicn;
+    private String image;
     private List<Physique> physiques;
     private List<Sexe> sexes;
     private List<Vie> vies;

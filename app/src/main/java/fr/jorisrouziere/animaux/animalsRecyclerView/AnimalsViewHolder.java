@@ -32,6 +32,7 @@ public class AnimalsViewHolder extends RecyclerView.ViewHolder{
 
     public void bind(Animal animal) {
         title.setText(animal.getNom_commun());
+        image.setImageResource(getResImage(animal));
 
         animalCard.setOnClickListener((view) -> {
             Fragment fragment = FicheAnimalFragment.newInstance(animal.getA_id());
@@ -43,5 +44,14 @@ public class AnimalsViewHolder extends RecyclerView.ViewHolder{
     static AnimalsViewHolder create(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_animal, parent, false);
         return new AnimalsViewHolder(view);
+    }
+
+    private int getResImage(Animal animal) {
+        String uri = "@drawable/";
+        String nomImage = animal.getImage();
+        //TODO: Penser à enlever les replaces une fois les donnees dans la bdd sont correctes
+        nomImage = nomImage.replace(".png", "");
+        nomImage = nomImage.replace(".jpg", "");
+        return itemView.getContext().getResources().getIdentifier(uri + nomImage, "drawable",  itemView.getContext().getPackageName());
     }
 }

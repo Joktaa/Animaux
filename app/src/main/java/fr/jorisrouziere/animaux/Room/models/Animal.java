@@ -42,6 +42,8 @@ public class Animal implements Serializable {
 
     private String uicn;
 
+    private String image;
+
     private List<Physique> physiques;
 
     private List<Sexe> sexes;
@@ -86,6 +88,10 @@ public class Animal implements Serializable {
         return uicn;
     }
 
+    public String getImage() {
+        return image;
+    }
+
     public List<Physique> getPhysiques() {
         return physiques;
     }
@@ -105,6 +111,8 @@ public class Animal implements Serializable {
     public List<Geographie> getGeographies() {
         return geographies;
     }
+
+
 
     public void setA_id(Long a_id) {
         this.a_id = a_id;
@@ -136,6 +144,10 @@ public class Animal implements Serializable {
 
     public void setUicn(String uicn) {
         this.uicn = uicn;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void setPhysiques(List<Physique> physiques) {
