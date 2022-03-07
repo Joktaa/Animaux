@@ -25,6 +25,7 @@ public class FicheAnimalFragment extends Fragment {
     public FicheAnimalFragment(Long _id) {
         id = _id;
     }
+    public FicheAnimalFragment() { }
 
     public static FicheAnimalFragment newInstance(Long _id) {
         FicheAnimalFragment fragment = new FicheAnimalFragment(_id);
@@ -39,6 +40,8 @@ public class FicheAnimalFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_fiche_animal, container, false);
+
+        id = FicheAnimalFragmentArgs.fromBundle(getArguments()).getId();
 
         Repository repository = new Repository(getContext());
         repository.getAnimalById(id).observe(getViewLifecycleOwner(), (animal -> {

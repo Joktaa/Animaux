@@ -6,15 +6,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import fr.jorisrouziere.animaux.R;
 import fr.jorisrouziere.animaux.Room.models.Animal;
-import fr.jorisrouziere.animaux.fragments.FicheAnimalFragment;
+import fr.jorisrouziere.animaux.fragments.AnimalsListFragmentDirections;
 import lombok.NonNull;
 
 public class AnimalsViewHolder extends RecyclerView.ViewHolder{
@@ -35,9 +34,8 @@ public class AnimalsViewHolder extends RecyclerView.ViewHolder{
         image.setImageResource(getResImage(animal));
 
         animalCard.setOnClickListener((view) -> {
-            Fragment fragment = FicheAnimalFragment.newInstance(animal.getA_id());
-            FragmentTransaction transaction = ((AppCompatActivity) itemView.getContext()).getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.main_fragment, fragment).commit();
+            NavDirections action = AnimalsListFragmentDirections.actionAnimalsListFragmentToFicheAnimalFragment(animal.getA_id());
+            Navigation.findNavController(view).navigate(action);
         });
     }
 
