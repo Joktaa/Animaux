@@ -30,6 +30,10 @@ public class Repository {
         return mAnimalDAO.getAnimalById(id);
     }
 
+    public void deleteById(Long id) {
+        mAnimalDAO.deleteById(id);
+    }
+
     public void reset() {
         mAnimalDAO.deleteAll();
     }

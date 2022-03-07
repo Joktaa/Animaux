@@ -53,6 +53,10 @@ public class API {
         mHttpClient.newCall(buildPost(path)).enqueue(callback);
     }
 
+    private Response deleteSynchronous(String path) throws IOException {
+        return mHttpClient.newCall(buildDelete(path)).execute();
+    }
+
     private Request buildGet(String path) {
         return new Request
                 .Builder()
@@ -65,6 +69,14 @@ public class API {
                 .Builder()
                 .url(String.format("%s%s", BASE_URL, path))
                 .post(RequestBody.create("", JSON_MEDIA_TYPE))
+                .build();
+    }
+
+    private Request buildDelete(String path) {
+        return new Request
+                .Builder()
+                .url(String.format("%s%s", BASE_URL, path))
+                .delete()
                 .build();
     }
 
@@ -100,12 +112,18 @@ public class API {
     }
 
     public Animal getAnimal(int id) throws ApiErrorException, IOException {
-        Response response = getSynchronous(String.format(Locale.FRANCE, "animal/%d", id));
+        Response response = getSynchronous(String.format(Locale.FRANCE, "/animal/%d", id));
 
         if (HttpsURLConnection.HTTP_OK == response.code()) {
             return JsonIOUtils.GSON.fromJson(response.body().string(), Animal.class);
         } else {
             return (Animal) handleApiErrorList(response);
         }
+    }
+
+    public boolean deleteAnimal(Long id) throws IOException {
+        Response response = deleteSynchronous(String.format(Locale.FRANCE, "/animal/%d", id));
+
+        return HttpsURLConnection.HTTP_OK == response.code();
     }
 }
