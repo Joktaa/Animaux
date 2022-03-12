@@ -1,12 +1,20 @@
 package fr.jorisrouziere.animaux.fragments;
 
+import static android.content.ContentValues.TAG;
+
+import android.app.SearchManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -33,6 +41,9 @@ public class AnimalsListFragment extends Fragment {
         return fragment;
     }
 
+    final AnimalsListAdapter adapter = new AnimalsListAdapter(new AnimalsListAdapter.AnimalDiff());
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) { super.onCreate(savedInstanceState); }
 
@@ -41,14 +52,13 @@ public class AnimalsListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_list_animals, container, false);
 
         RecyclerView recyclerView = view.findViewById(R.id.animals_list);
-        final AnimalsListAdapter adapter = new AnimalsListAdapter(new AnimalsListAdapter.AnimalDiff());
         adapter.setHasStableIds(true);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
 
         AnimalsViewModel animalsViewModel = new ViewModelProvider(this).get(AnimalsViewModel.class);
         animalsViewModel.getAnimals().observe(getViewLifecycleOwner(), adapter::submitList);
-
+        animalsViewModel.getAnimals().observe(getViewLifecycleOwner(), adapter::setFullList);
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
@@ -72,7 +82,38 @@ public class AnimalsListFragment extends Fragment {
                 }).show();
             }
         }).attachToRecyclerView(recyclerView);
-
+        setHasOptionsMenu(true);
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.search_bar, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(getContext().SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (newText.isEmpty()) {
+                    Log.i(TAG, "onQueryTextChange: EMPTY");
+                    adapter.getFilter().filter("");
+                } else {
+                    Log.i(TAG, "onQueryTextChange: search text is "+newText.toString());
+                    adapter.getFilter().filter(newText);
+                }
+                return true;
+            }
+        });
+
     }
 }
