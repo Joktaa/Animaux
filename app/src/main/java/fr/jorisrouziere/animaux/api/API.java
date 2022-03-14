@@ -1,5 +1,6 @@
 package fr.jorisrouziere.animaux.api;
 
+import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
@@ -49,8 +50,8 @@ public class API {
         return mHttpClient.newCall(buildGet(path)).execute();
     }
 
-    private void postAsynchronous(String path, Callback callback) {
-        mHttpClient.newCall(buildPost(path)).enqueue(callback);
+    private void postAsynchronous(String path, RequestBody body, Callback callback) {
+        mHttpClient.newCall(buildPost(path, body)).enqueue(callback);
     }
 
     private Response deleteSynchronous(String path) throws IOException {
@@ -64,11 +65,11 @@ public class API {
                 .build();
     }
 
-    private Request buildPost(String path) {
+    private Request buildPost(String path, RequestBody body) {
         return new Request
                 .Builder()
                 .url(String.format("%s%s", BASE_URL, path))
-                .post(RequestBody.create("", JSON_MEDIA_TYPE))
+                .post(body)
                 .build();
     }
 
@@ -125,5 +126,11 @@ public class API {
         Response response = deleteSynchronous(String.format(Locale.FRANCE, "/animal/%d", id));
 
         return HttpsURLConnection.HTTP_OK == response.code();
+    }
+
+    public void postAnimal(Animal animal, Callback callback) {
+        postAsynchronous(String.format(Locale.FRANCE, "/animal/"),
+                RequestBody.create(new Gson().toJson(animal), JSON_MEDIA_TYPE),
+                callback);
     }
 }

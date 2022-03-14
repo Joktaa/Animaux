@@ -26,6 +26,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.List;
 
 import fr.jorisrouziere.animaux.R;
+import fr.jorisrouziere.animaux.Room.Repository;
 import fr.jorisrouziere.animaux.Room.models.Animal;
 import fr.jorisrouziere.animaux.Utils.ApiUtils;
 import fr.jorisrouziere.animaux.animalsRecyclerView.AnimalsListAdapter;
@@ -52,7 +53,9 @@ public class AnimalsListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_list_animals, container, false);
 
         RecyclerView recyclerView = view.findViewById(R.id.animals_list);
-        adapter.setHasStableIds(true);
+        if (!adapter.hasObservers()) {
+            adapter.setHasStableIds(true);
+        }
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
 
@@ -67,17 +70,27 @@ public class AnimalsListFragment extends Fragment {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                var ref = new Object() {
+                    boolean deleted = true;
+                };
+                Repository repository = new Repository(getContext());
                 List<Animal> animaux = adapter.getCurrentList();
-                Animal deletedAnimal = animaux.get(viewHolder.getAdapterPosition());
                 int position = viewHolder.getAdapterPosition();
-                ApiUtils.deleteAnimal(getContext(), viewHolder.getItemId());
-                adapter.notifyItemRemoved(viewHolder.getAdapterPosition());  // TODO : dépend du résultat de l'appel API
-                Snackbar.make(view, deletedAnimal.getNom_commun(), Snackbar.LENGTH_LONG).setAction("Annuler", new View.OnClickListener() {
+                Animal deletedAnimal = animaux.get(position);
+                repository.deleteById(deletedAnimal.getA_id());
+                adapter.notifyItemRemoved(position);
+                Snackbar.make(view, deletedAnimal.getNom_commun(), Snackbar.LENGTH_LONG).setAction("Annuler", v -> {
+                    repository.insertOneAnimal(deletedAnimal);
+                    adapter.notifyItemInserted(position);
+                    ref.deleted = false;
+                }).addCallback(new Snackbar.Callback() {
                     @Override
-                    public void onClick(View v) {
-                        // TODO : Reposter l'animal
-                        //animaux.add(position, deletedAnimal);
-                        //adapter.notifyItemInserted(position);
+                    public void onDismissed(Snackbar transientBottomBar, int event) {
+                        super.onDismissed(transientBottomBar, event);
+                        System.out.println();
+                        if (ref.deleted) {
+                            ApiUtils.deleteAnimal(deletedAnimal.getA_id());
+                        }
                     }
                 }).show();
             }
