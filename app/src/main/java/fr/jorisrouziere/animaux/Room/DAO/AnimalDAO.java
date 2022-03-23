@@ -13,7 +13,10 @@ import fr.jorisrouziere.animaux.Room.models.Animal;
 @Dao
 public interface AnimalDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(List<Animal> artefactList);
+    void insertAll(List<Animal> animalList);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertOne(Animal animal);
 
     @Query("SELECT * FROM animal")
     LiveData<List<Animal>> getAnimals();
