@@ -22,7 +22,7 @@ import okhttp3.Response;
 
 public class API {
 
-    private static final String BASE_URL = "http://10.0.2.2:8888/api";
+    private static final String BASE_URL = "https://animaux-api.herokuapp.com/api";
     private static final MediaType JSON_MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
 
     private static API sAPI;

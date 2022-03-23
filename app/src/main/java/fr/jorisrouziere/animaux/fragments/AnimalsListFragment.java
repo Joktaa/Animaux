@@ -11,12 +11,16 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -83,6 +87,16 @@ public class AnimalsListFragment extends Fragment {
             }
         }).attachToRecyclerView(recyclerView);
         setHasOptionsMenu(true);
+
+        NavController nav = Navigation.findNavController(view);
+        Button gotToAddAnimal=(Button) view.findViewById(R.id.button_add_animal);
+        gotToAddAnimal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nav.navigate(R.id.action_animalsListFragment_to_ficheAnimalFragment);
+            }
+        });
+
         return view;
     }
 

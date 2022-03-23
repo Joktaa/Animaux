@@ -5,9 +5,13 @@
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.21875" />
         <entry key="..\:/Ynov/Projet dev animaux/Animaux/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.193" />
+        <entry key="..\:/Ynov/Projet dev animaux/Animaux/app/src/main/res/drawable/ic_add.xml" value="0.137" />
         <entry key="..\:/Ynov/Projet dev animaux/Animaux/app/src/main/res/drawable/ic_launcher_background.xml" value="0.193" />
         <entry key="..\:/Ynov/Projet dev animaux/Animaux/app/src/main/res/layout/activity_affiche_animal.xml" value="0.2" />
         <entry key="..\:/Ynov/Projet dev animaux/Animaux/app/src/main/res/layout/activity_main.xml" value="0.16802536231884058" />
+        <entry key="..\:/Ynov/Projet dev animaux/Animaux/app/src/main/res/layout/fragment_create_update_animal.xml" value="0.23615160349854228" />
+        <entry key="..\:/Ynov/Projet dev animaux/Animaux/app/src/main/res/layout/fragment_fiche_animal.xml" value="0.2" />
+        <entry key="..\:/Ynov/Projet dev animaux/Animaux/app/src/main/res/layout/fragment_list_animals.xml" value="0.2" />
         <entry key="..\:/Ynov/Projet dev animaux/Animaux/app/src/main/res/layout/item_animal.xml" value="0.16802536231884058" />
         <entry key="app/src/main/res/layout/activity_fiche_animal.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
