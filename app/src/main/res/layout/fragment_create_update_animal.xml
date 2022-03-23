@@ -18,30 +18,45 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonSaveAnimal"
             app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/titre"
+                android:layout_width="377dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="175dp"
+                android:layout_marginEnd="178dp"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textViewNomAnimal"
                 android:layout_width="143dp"
                 android:layout_height="31dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/nom_animal"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/titre" />
 
             <EditText
-                android:id="@+id/descpritionNom"
+                android:id="@+id/descriptionNom"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -63,10 +78,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionNom" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionNom" />
 
             <EditText
-                android:id="@+id/descpritionNomImage"
+                android:id="@+id/descriptionNomImage"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -78,7 +93,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textViewNomImage" />
 
             <EditText
-                android:id="@+id/descpritionOrdre"
+                android:id="@+id/descriptionOrdre"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -101,10 +116,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionSousEmbranchement" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionSousEmbranchement" />
 
             <EditText
-                android:id="@+id/descpritionSousEmbranchement"
+                android:id="@+id/descriptionSousEmbranchement"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -113,8 +128,7 @@
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewSousEmbranchement"
-                tools:ignore="EditableContentDescCheck"
-                />
+                tools:ignore="EditableContentDescCheck" />
 
             <TextView
                 android:id="@+id/textViewSousEmbranchement"
@@ -127,10 +141,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionEmbranchement" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionEmbranchement" />
 
             <EditText
-                android:id="@+id/descpritionEmbranchement"
+                android:id="@+id/descriptionEmbranchement"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -153,10 +167,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionEspece" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionEspece" />
 
             <EditText
-                android:id="@+id/descpritionEspece"
+                android:id="@+id/descriptionEspece"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -179,10 +193,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionGenre" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionGenre" />
 
             <EditText
-                android:id="@+id/descpritionGenre"
+                android:id="@+id/descriptionGenre"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -204,7 +218,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionNomImage" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionNomImage" />
 
             <TextView
                 android:id="@+id/textViewUicn"
@@ -217,10 +231,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionOrdre" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionOrdre" />
 
             <EditText
-                android:id="@+id/descpritionUicn"
+                android:id="@+id/descriptionUicn"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -243,10 +257,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionUicn" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionUicn" />
 
             <EditText
-                android:id="@+id/descpritionPhysiques"
+                android:id="@+id/descriptionPhysiques"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -269,10 +283,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionPhysiques" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionPhysiques" />
 
             <EditText
-                android:id="@+id/descpritionSexes"
+                android:id="@+id/descriptionSexes"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -295,10 +309,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionSexes" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionSexes" />
 
             <EditText
-                android:id="@+id/descpritionVies"
+                android:id="@+id/descriptionVies"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -315,16 +329,16 @@
                 android:layout_height="31dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
+                android:inputType="textMultiLine"
                 android:text="@string/fiche_reproductions"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionVies"
-                android:inputType="textMultiLine" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionVies" />
 
             <EditText
-                android:id="@+id/descpritionReproductions"
+                android:id="@+id/descriptionReproductions"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -347,10 +361,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionReproductions" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionReproductions" />
 
             <EditText
-                android:id="@+id/descpritionGeographie"
+                android:id="@+id/descriptionGeographie"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -362,6 +376,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/textViewGeographie"
                 tools:ignore="EditableContentDescCheck" />
 
+            <Button
+                android:id="@+id/buttonSaveAnimal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/descriptionGeographie"
+                tools:text="Enregistrer" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

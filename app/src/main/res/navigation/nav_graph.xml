@@ -11,11 +11,35 @@
         <action
             android:id="@+id/action_animalsListFragment_to_ficheAnimalFragment"
             app:destination="@id/ficheAnimalFragment" />
+        <action
+            android:id="@+id/action_animalsListFragment_to_createUpdateAnimal"
+            app:destination="@id/createUpdateAnimal" >
+            <argument
+                android:name="id"
+                android:defaultValue="0L" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/ficheAnimalFragment"
         android:name="fr.jorisrouziere.animaux.fragments.FicheAnimalFragment"
         android:label="FicheAnimalFragment" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_ficheAnimalFragment_to_createUpdateAnimal"
+            app:destination="@id/createUpdateAnimal" >
+            <argument
+                android:name="id"
+                app:argType="long"
+                android:defaultValue="0L" />
+
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/createUpdateAnimal"
+        android:name="fr.jorisrouziere.animaux.fragments.CreateUpdateAnimal"
+        android:label="CreateUpdateAnimal" >
         <argument
             android:name="id"
             app:argType="long" />

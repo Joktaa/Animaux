@@ -18,13 +18,16 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
@@ -35,6 +38,7 @@ import fr.jorisrouziere.animaux.Room.models.Animal;
 import fr.jorisrouziere.animaux.Utils.ApiUtils;
 import fr.jorisrouziere.animaux.animalsRecyclerView.AnimalsListAdapter;
 import fr.jorisrouziere.animaux.animalsRecyclerView.AnimalsViewModel;
+import lombok.val;
 
 public class AnimalsListFragment extends Fragment {
     public AnimalsListFragment() {}
@@ -101,12 +105,12 @@ public class AnimalsListFragment extends Fragment {
         }).attachToRecyclerView(recyclerView);
         setHasOptionsMenu(true);
 
-        NavController nav = Navigation.findNavController(view);
-        Button gotToAddAnimal=(Button) view.findViewById(R.id.button_add_animal);
-        gotToAddAnimal.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton btnAddAnimal = view.findViewById(R.id.button_add_animal);
+        NavController navController = NavHostFragment.findNavController(this);
+        btnAddAnimal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nav.navigate(R.id.action_animalsListFragment_to_ficheAnimalFragment);
+                navController.navigate(R.id.action_animalsListFragment_to_createUpdateAnimal);
             }
         });
 

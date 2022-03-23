@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/descpritionOrdre"
+                android:id="@+id/descriptionOrdre"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -47,10 +47,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionSousEmbranchement" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionSousEmbranchement" />
 
             <TextView
-                android:id="@+id/descpritionSousEmbranchement"
+                android:id="@+id/descriptionSousEmbranchement"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -70,10 +70,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionEmbranchement" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionEmbranchement" />
 
             <TextView
-                android:id="@+id/descpritionEmbranchement"
+                android:id="@+id/descriptionEmbranchement"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -93,10 +93,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionEspece" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionEspece" />
 
             <TextView
-                android:id="@+id/descpritionEspece"
+                android:id="@+id/descriptionEspece"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -116,10 +116,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionGenre" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionGenre" />
 
             <TextView
-                android:id="@+id/descpritionGenre"
+                android:id="@+id/descriptionGenre"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -188,10 +188,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionOrdre" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionOrdre" />
 
             <TextView
-                android:id="@+id/descpritionUicn"
+                android:id="@+id/descriptionUicn"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -211,10 +211,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionUicn" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionUicn" />
 
             <TextView
-                android:id="@+id/descpritionPhysiques"
+                android:id="@+id/descriptionPhysiques"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -234,10 +234,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionPhysiques" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionPhysiques" />
 
             <TextView
-                android:id="@+id/descpritionSexes"
+                android:id="@+id/descriptionSexes"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -257,10 +257,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionSexes" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionSexes" />
 
             <TextView
-                android:id="@+id/descpritionVies"
+                android:id="@+id/descriptionVies"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -280,10 +280,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionVies" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionVies" />
 
             <TextView
-                android:id="@+id/descpritionReproductions"
+                android:id="@+id/descriptionReproductions"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
@@ -303,10 +303,10 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descpritionReproductions" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionReproductions" />
 
             <TextView
-                android:id="@+id/descpritionGeographie"
+                android:id="@+id/descriptionGeographie"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
