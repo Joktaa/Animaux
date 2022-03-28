@@ -11,6 +11,13 @@
         <action
             android:id="@+id/action_animalsListFragment_to_ficheAnimalFragment"
             app:destination="@id/ficheAnimalFragment" />
+        <action
+            android:id="@+id/action_animalsListFragment_to_arbreFragment"
+            app:destination="@id/arbreFragment" >
+            <argument
+                android:name="id"
+                app:argType="integer"/>
+        </action>
     </fragment>
     <fragment
         android:id="@+id/ficheAnimalFragment"
@@ -19,5 +26,20 @@
         <argument
             android:name="id"
             app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/arbreFragment"
+        android:name="fr.jorisrouziere.animaux.fragments.ArbreFragment"
+        android:label="ArbreFragment" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_arbreFragment_self"
+            app:destination="@id/arbreFragment" >
+            <argument
+                android:name="id"
+                app:argType="integer"/>
+        </action>
     </fragment>
 </navigation>

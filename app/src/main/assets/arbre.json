@@ -1,0 +1,36 @@
+{
+  "donnees": [
+    {
+      "id": 0,
+      "nom": "exemple 0",
+      "prec": null,
+      "valeurs": [
+        {
+          "nom": "exemple 1",
+          "description": "C'est l'exemple 1",
+          "photo": 700027,
+          "suivant": 1
+        },
+        {
+          "nom": "exemple 2",
+          "description": "C'est l'exemple 2",
+          "photo": 700027,
+          "suivant": 2
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "nom": "exemple 1",
+      "prec": 0,
+      "valeurs": [
+        {
+          "nom": "exemple 3",
+          "description": "C'est l'exemple 3",
+          "photo": 700027,
+          "suivant": 4
+        }
+      ]
+    }
+  ]
+}

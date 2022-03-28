@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    
+    <ImageView
+        android:id="@+id/arbreImage"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:src="@drawable/coelacanthe"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/arbreTitle"
+        android:text="Règne animal"
+        android:textColor="#fff"
+        android:textStyle="bold|italic"
+        android:textSize="30sp"
+        android:padding="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="12sp"/>
+
+    <TextView
+        android:id="@+id/arbreSubtitle"
+        android:text="Les animaux là oui"
+        android:textColor="#fff"
+        android:textStyle="bold|italic"
+        android:textSize="24sp"
+        android:padding="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16sp"
+        android:layout_marginHorizontal="10sp"/>
+
+</RelativeLayout>
