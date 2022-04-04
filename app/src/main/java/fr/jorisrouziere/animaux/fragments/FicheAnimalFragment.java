@@ -94,35 +94,35 @@ public class FicheAnimalFragment extends Fragment {
             texteAAfficher = "";
             TextView physique = view.findViewById(R.id.descriptionPhysiques);
             for (Physique p: animal.getPhysiques()) {
-                texteAAfficher += "- " + p.getDescription() + "\n";
+                texteAAfficher += "- " + p.getDescription().replace(";", "\n-");
             }
             physique.setText(texteAAfficher);
 
             texteAAfficher = "";
             TextView sexe = view.findViewById(R.id.descriptionSexes);
             for (Sexe s: animal.getSexes()) {
-                texteAAfficher += "- " + s.getDescription() + "\n";
+                texteAAfficher += "- " + s.getDescription().replace(";", "\n-");
             }
             sexe.setText(texteAAfficher);
 
             texteAAfficher = "";
             TextView vie = view.findViewById(R.id.descriptionVies);
             for (Vie v: animal.getVies()) {
-                texteAAfficher += "- " + v.getDescription() + "\n";
+                texteAAfficher += "- " + v.getDescription().replace(";", "\n-");
             }
             vie.setText(texteAAfficher);
 
             texteAAfficher = "";
             TextView reproduction = view.findViewById(R.id.descriptionReproductions);
             for (Reproduction r: animal.getReproductions()) {
-                texteAAfficher += "- " + r.getDescription() + "\n";
+                texteAAfficher += "- " + r.getDescription().replace(";", "\n-");
             }
             reproduction.setText(texteAAfficher);
 
             texteAAfficher = "";
             TextView geographie = view.findViewById(R.id.descriptionGeographie);
             for (Geographie g: animal.getGeographies()) {
-                texteAAfficher += "- " + g.getDescription() + "\n";
+                texteAAfficher += "- " + g.getDescription().replace(";","\n-");
             }
             geographie.setText(texteAAfficher);
         }));

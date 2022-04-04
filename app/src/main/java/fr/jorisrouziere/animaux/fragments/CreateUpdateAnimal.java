@@ -257,35 +257,35 @@ public class CreateUpdateAnimal extends Fragment implements View.OnClickListener
             texteAAfficher = "";
             EditText physique = view.findViewById(R.id.descriptionPhysiques);
             for (Physique p: animal.getPhysiques()) {
-                texteAAfficher += p.getDescription() + "; ";
+                texteAAfficher += p.getDescription().toString().replace(";", "; ");
             }
             physique.setText(texteAAfficher);
 
             texteAAfficher = "";
             EditText sexe = view.findViewById(R.id.descriptionSexes);
             for (Sexe s: animal.getSexes()) {
-                texteAAfficher += s.getDescription() + "; ";
+                texteAAfficher += s.getDescription().replace(";", "; ");
             }
             sexe.setText(texteAAfficher);
 
             texteAAfficher = "";
             EditText vie = view.findViewById(R.id.descriptionVies);
             for (Vie v: animal.getVies()) {
-                texteAAfficher += v.getDescription() + "; ";
+                texteAAfficher += v.getDescription().replace(";","; ");
             }
             vie.setText(texteAAfficher);
 
             texteAAfficher = "";
             EditText reproduction = view.findViewById(R.id.descriptionReproductions);
             for (Reproduction r: animal.getReproductions()) {
-                texteAAfficher += r.getDescription() + "; ";
+                texteAAfficher += r.getDescription().replace(";", "; ");
             }
             reproduction.setText(texteAAfficher);
 
             texteAAfficher = "";
             EditText geographie = view.findViewById(R.id.descriptionGeographie);
             for (Geographie g: animal.getGeographies()) {
-                texteAAfficher += g.getDescription() + "; ";
+                texteAAfficher += g.getDescription().replace(";", "; ");
             }
             geographie.setText(texteAAfficher);
         }));
@@ -297,8 +297,11 @@ public class CreateUpdateAnimal extends Fragment implements View.OnClickListener
         {
             case R.id.buttonSaveAnimal:        // it mean if button1 click then this work
                 Animal animal = InitAnimal(this.view);
-                if (animal != null){
+                if (animal != null && this.id == 0){
                     ApiUtils.postAnimal(this.view.getContext(), animal);
+                }
+                else if(animal != null && this.id != 0 ){
+                    ApiUtils.putAnimal(this.view.getContext(), animal);
                 }
                 break;
         }
