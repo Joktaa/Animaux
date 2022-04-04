@@ -1,6 +1,7 @@
 package fr.jorisrouziere.animaux.fragments.adapters;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,11 +44,13 @@ public class ArbreAdapter extends ArrayAdapter<String> {
         TextView subTitleText = rowView.findViewById(R.id.arbreSubtitle);
 
         titleText.setText(titres.get(position));
-        imageView.setImageResource(images.get(position));
-        imageView.setOnClickListener((v) -> {
-            NavDirections action = ArbreFragmentDirections.actionArbreFragmentSelf(ids.get(position));
-            Navigation.findNavController(v).navigate(action);
-        });
+        //imageView.setImageResource(images.get(position));
+        if (ids.get(position) != -1) {
+            imageView.setOnClickListener((v) -> {
+                NavDirections action = ArbreFragmentDirections.actionArbreFragmentSelf(ids.get(position));
+                Navigation.findNavController(v).navigate(action);
+            });
+        }
         subTitleText.setText(sousTitres.get(position));
 
         return rowView;

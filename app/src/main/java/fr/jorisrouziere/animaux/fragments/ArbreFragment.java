@@ -62,7 +62,7 @@ public class ArbreFragment extends Fragment {
                 ids.add(o.getInt("suivant"));
             }
 
-            ArbreAdapter adapter=new ArbreAdapter(getActivity(), titres, sousTitres, images, ids);
+            ArbreAdapter adapter = new ArbreAdapter(getActivity(), titres, sousTitres, images, ids);
             ListView list = view.findViewById(R.id.listArbre);
             list.setAdapter(adapter);
 

@@ -2,35 +2,207 @@
   "donnees": [
     {
       "id": 0,
-      "nom": "exemple 0",
+      "nom": "Métazoaires",
       "prec": null,
       "valeurs": [
         {
-          "nom": "exemple 1",
-          "description": "C'est l'exemple 1",
+          "nom": "Porifères",
+          "description": "",
           "photo": 700027,
           "suivant": 1
         },
         {
-          "nom": "exemple 2",
-          "description": "C'est l'exemple 2",
+          "nom": "Eumétazoaires",
+          "description": "",
           "photo": 700027,
           "suivant": 2
         }
       ]
     },
     {
-      "id": 1,
-      "nom": "exemple 1",
+      "id": 2,
+      "nom": "Eumétazoaires",
       "prec": 0,
       "valeurs": [
         {
-          "nom": "exemple 3",
-          "description": "C'est l'exemple 3",
+          "nom": "Cnidaires",
+          "description": "",
+          "photo": 700027,
+          "suivant": 3
+        },
+        {
+          "nom": "Bilatériens",
+          "description": "",
           "photo": 700027,
           "suivant": 4
         }
       ]
+    },
+    {
+      "id": 4,
+      "nom": "Bilatériens",
+      "prec": 2,
+      "valeurs": [
+        {
+          "nom": "Deutérostomiens",
+          "description": "",
+          "photo": 700027,
+          "suivant": 5
+        },
+        {
+          "nom": "Ecdysozoaires",
+          "description": "",
+          "photo": 700027,
+          "suivant": 6
+        },
+        {
+          "nom": "Lophotrochozoaires",
+          "description": "",
+          "photo": 700027,
+          "suivant": 7
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nom": "Deutérostomiens",
+      "prec": 4,
+      "valeurs": [
+        {
+          "nom": "Cordés",
+          "description": "",
+          "photo": 700027,
+          "suivant": 8
+        },
+        {
+          "nom": "Échinodermes",
+          "description": "",
+          "photo": 700027,
+          "suivant": 9
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "nom": "Ecdysozoaires",
+      "prec": 4,
+      "valeurs": [
+        {
+          "nom": "Arthropodes",
+          "description": "",
+          "photo": 700027,
+          "suivant": null
+        },
+        {
+          "nom": "Nématodes",
+          "description": "",
+          "photo": 700027,
+          "suivant": null
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "nom": "Lophotrochozoaires",
+      "prec": 4,
+      "valeurs": [
+        {
+          "nom": "Annélides",
+          "description": "",
+          "photo": 700027,
+          "suivant": null
+        },
+        {
+          "nom": "Mollusques",
+          "description": "",
+          "photo": 700027,
+          "suivant": null
+        },
+        {
+          "nom": "Lophophoriens",
+          "description": "",
+          "photo": 700027,
+          "suivant": null
+        },
+        {
+          "nom": "Rotifères",
+          "description": "",
+          "photo": 700027,
+          "suivant": null
+        },
+        {
+          "nom": "Plathelminthes",
+          "description": "",
+          "photo": 700027,
+          "suivant": null
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "nom": "Porifères",
+      "prec": 0,
+      "valeurs": []
+    },
+    {
+      "id": 3,
+      "nom": "Cnidaires",
+      "prec": 2,
+      "valeurs": []
+    },
+    {
+      "id": 8,
+      "nom": "Cordés",
+      "prec": 5,
+      "valeurs": []
+    },
+    {
+      "id": 9,
+      "nom": "Échinodermes",
+      "prec": 5,
+      "valeurs": []
+    },
+    {
+      "id": 10,
+      "nom": "Arthropodes",
+      "prec": 6,
+      "valeurs": []
+    },
+    {
+      "id": 11,
+      "nom": "Nématodes",
+      "prec": 6,
+      "valeurs": []
+    },
+    {
+      "id": 12,
+      "nom": "Annélides",
+      "prec": 7,
+      "valeurs": []
+    },
+    {
+      "id": 13,
+      "nom": "Mollusques",
+      "prec": 7,
+      "valeurs": []
+    },
+    {
+      "id": 14,
+      "nom": "Lophophoriens",
+      "prec": 7,
+      "valeurs": []
+    },
+    {
+      "id": 15,
+      "nom": "Rotifères",
+      "prec": 7,
+      "valeurs": []
+    },
+    {
+      "id": 16,
+      "nom": "Plathelminthes",
+      "prec": 7,
+      "valeurs": []
     }
   ]
 }
