@@ -162,7 +162,7 @@ public class CreateUpdateAnimal extends Fragment implements View.OnClickListener
             return null;
         }
         else{
-            physique.setDescription( EditPhysique.getText().toString());
+            physique.setDescription( EditPhysique.getText().toString().replace(",", "; "));
             List<Physique> physiqueList = new ArrayList<>();
             physiqueList.add(physique);
             animal.setPhysiques(physiqueList);
@@ -175,7 +175,7 @@ public class CreateUpdateAnimal extends Fragment implements View.OnClickListener
         }
         else{
             Sexe sexe1 = new Sexe();
-            sexe1.setDescription(sexe.getText().toString());
+            sexe1.setDescription(sexe.getText().toString().replace(",","; "));
             List<Sexe> sexeList = new ArrayList<>();
             sexeList.add(sexe1);
             animal.setSexes(sexeList);
@@ -188,7 +188,7 @@ public class CreateUpdateAnimal extends Fragment implements View.OnClickListener
         }
         else{
             Vie vie1 = new Vie();
-            vie1.setDescription(vie.getText().toString());
+            vie1.setDescription(vie.getText().toString().replace(",","; "));
             List<Vie> vieList = new ArrayList<>();
             vieList.add(vie1);
             animal.setVies(vieList);
@@ -202,7 +202,7 @@ public class CreateUpdateAnimal extends Fragment implements View.OnClickListener
         else{
             Reproduction reproduction1 = new Reproduction();
             List<Reproduction> reproductionList = new ArrayList<>();
-            reproduction1.setDescription(reproduction.getText().toString());
+            reproduction1.setDescription(reproduction.getText().toString().replace(",","; "));
             reproductionList.add(reproduction1);
             animal.setReproductions(reproductionList);
         }
@@ -215,7 +215,7 @@ public class CreateUpdateAnimal extends Fragment implements View.OnClickListener
         else{
             Geographie geographie1 = new Geographie();
             List<Geographie> geographieList = new ArrayList<>();
-            geographie1.setDescription(geographie.getText().toString());
+            geographie1.setDescription(geographie.getText().toString().replace(",","; "));
             geographieList.add(geographie1);
             animal.setGeographies(geographieList);
         }
