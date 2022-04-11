@@ -25,6 +25,9 @@ import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import fr.jorisrouziere.animaux.R;
 import fr.jorisrouziere.animaux.Room.Repository;
 import fr.jorisrouziere.animaux.model.Geographie;
@@ -35,6 +38,8 @@ import fr.jorisrouziere.animaux.model.Vie;
 
 public class FicheAnimalFragment extends Fragment {
     private Long id;
+    private FirebaseAuth firebaseAuth;
+    View view;
 
     public FicheAnimalFragment(Long _id) {
         id = _id;
@@ -53,10 +58,9 @@ public class FicheAnimalFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_fiche_animal, container, false);
-
+        view = inflater.inflate(R.layout.fragment_fiche_animal, container, false);
+        firebaseAuth = FirebaseAuth.getInstance();
         id = FicheAnimalFragmentArgs.fromBundle(getArguments()).getId();
-
         Repository repository = new Repository(getContext());
         repository.getAnimalById(id).observe(getViewLifecycleOwner(), (animal -> {
             String texteAAfficher;
@@ -131,9 +135,21 @@ public class FicheAnimalFragment extends Fragment {
         return view;
     }
 
+    private boolean CheckUser() {
+        boolean connected = true;
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser == null){
+            connected = false;
+        }
+        return connected;
+    }
+
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.menu_fiche_animal, menu);
+        if (!CheckUser()){
+            menu.findItem(R.id.action_update_animal).setVisible(false);
+        }
         super.onCreateOptionsMenu(menu, inflater);
     }
 
