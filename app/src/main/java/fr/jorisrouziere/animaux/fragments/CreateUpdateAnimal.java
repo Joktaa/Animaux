@@ -156,16 +156,18 @@ public class CreateUpdateAnimal extends Fragment implements View.OnClickListener
         }
 
         EditText EditPhysique = view.findViewById(R.id.descriptionPhysiques);
-        Physique physique = new Physique();
         if (EditPhysique.getText().toString().isEmpty()){
             Toast.makeText(this.getContext(), "Vous n'avez pas saisie les caractéristiques physiques de l'animal", Toast.LENGTH_SHORT).show();
             return null;
         }
         else{
+            Physique physique = new Physique();
             physique.setDescription( EditPhysique.getText().toString().replace(",", "; "));
             List<Physique> physiqueList = new ArrayList<>();
             physiqueList.add(physique);
             animal.setPhysiques(physiqueList);
+            System.out.println(physiqueList.toString());
+            System.out.println(animal.toString());
         }
 
         EditText sexe = view.findViewById(R.id.descriptionSexes);
