@@ -22,10 +22,11 @@ public class ArbreAdapter extends ArrayAdapter<String> {
     private final Activity context;
     private final ArrayList<String> titres;
     private final ArrayList<String> sousTitres;
-    private final ArrayList<Integer> images;
+    private final ArrayList<String> images;
     private final ArrayList<Integer> ids;
+    private final Resources resources;
 
-    public ArbreAdapter(Activity context, ArrayList<String> titres, ArrayList<String> sousTitres, ArrayList<Integer> images, ArrayList<Integer> ids) {
+    public ArbreAdapter(Activity context, ArrayList<String> titres, ArrayList<String> sousTitres, ArrayList<String> images, ArrayList<Integer> ids) {
         super(context, R.layout.item_arbre, titres);
 
         this.context = context;
@@ -33,18 +34,20 @@ public class ArbreAdapter extends ArrayAdapter<String> {
         this.sousTitres = sousTitres;
         this.images = images;
         this.ids = ids;
+        this.resources = context.getResources();
     }
 
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView = inflater.inflate(R.layout.item_arbre, null,true);
+        final int imageId = resources.getIdentifier(images.get(position), "drawable", context.getPackageName());
 
         TextView titleText = rowView.findViewById(R.id.arbreTitle);
         ImageView imageView = rowView.findViewById(R.id.arbreImage);
         TextView subTitleText = rowView.findViewById(R.id.arbreSubtitle);
 
         titleText.setText(titres.get(position));
-        //imageView.setImageResource(images.get(position));
+        imageView.setImageResource(imageId);
         if (ids.get(position) != -1) {
             imageView.setOnClickListener((v) -> {
                 NavDirections action = ArbreFragmentDirections.actionArbreFragmentSelf(ids.get(position));

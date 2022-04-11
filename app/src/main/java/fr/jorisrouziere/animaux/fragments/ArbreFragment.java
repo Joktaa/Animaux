@@ -45,7 +45,7 @@ public class ArbreFragment extends Fragment {
 
         ArrayList<String> titres = new ArrayList<>();
         ArrayList<String> sousTitres = new ArrayList<>();
-        ArrayList<Integer> images = new ArrayList<>();
+        ArrayList<String> images = new ArrayList<>();
         ArrayList<Integer> ids = new ArrayList<>();
 
         try {
@@ -58,7 +58,7 @@ public class ArbreFragment extends Fragment {
                 JSONObject o = valeurs.getJSONObject(i);
                 titres.add(o.getString("nom"));
                 sousTitres.add(o.getString("description"));
-                images.add(R.drawable.coelacanthe);
+                images.add(o.getString("photo"));
                 ids.add(o.getInt("suivant"));
             }
 
