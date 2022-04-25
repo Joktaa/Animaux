@@ -25,4 +25,7 @@ public class AnimalsViewModel extends AndroidViewModel {
     public LiveData<Animal> getAnimalById(Long id) {
         return repository.getAnimalById(id);
     }
+    public LiveData<List<Animal>> getAnimalsByArbre(String arbre) {
+        return repository.getAnimalsByArbre(arbre);
+    }
 }

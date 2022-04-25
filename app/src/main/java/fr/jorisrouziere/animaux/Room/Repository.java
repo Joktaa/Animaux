@@ -34,6 +34,10 @@ public class Repository {
         return mAnimalDAO.getAnimalById(id);
     }
 
+    public LiveData<List<Animal>> getAnimalsByArbre(String arbre) {
+        return mAnimalDAO.getAnimalsByArbre(arbre);
+    }
+
     public void deleteById(Long id) {
         mAnimalDAO.deleteById(id);
     }

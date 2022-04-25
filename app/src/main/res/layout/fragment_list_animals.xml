@@ -11,10 +11,12 @@
         android:divider="@null"
         tools:listitem="@layout/item_animal" />
 
-    <Button
-        android:id="@+id/button"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_tree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="clique"/>
+        android:layout_gravity="bottom|start"
+        android:layout_margin="32dp"
+        android:src="@drawable/ic_tree" />
 
 </FrameLayout>

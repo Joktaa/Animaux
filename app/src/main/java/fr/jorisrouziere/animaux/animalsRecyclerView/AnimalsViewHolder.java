@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import fr.jorisrouziere.animaux.R;
 import fr.jorisrouziere.animaux.Room.models.Animal;
 import fr.jorisrouziere.animaux.fragments.AnimalsListFragmentDirections;
+import fr.jorisrouziere.animaux.fragments.ArbreFragmentDirections;
 import lombok.NonNull;
 
 public class AnimalsViewHolder extends RecyclerView.ViewHolder{
@@ -34,8 +35,13 @@ public class AnimalsViewHolder extends RecyclerView.ViewHolder{
         image.setImageResource(getResImage(animal));
 
         animalCard.setOnClickListener((view) -> {
-            NavDirections action = AnimalsListFragmentDirections.actionAnimalsListFragmentToFicheAnimalFragment(animal.getA_id());
-            Navigation.findNavController(view).navigate(action);
+            try {
+                NavDirections action = AnimalsListFragmentDirections.actionAnimalsListFragmentToFicheAnimalFragment(animal.getA_id());
+                Navigation.findNavController(view).navigate(action);
+            } catch (IllegalArgumentException e) {
+                NavDirections action = ArbreFragmentDirections.actionArbreFragmentToFicheAnimalFragment(animal.getA_id());
+                Navigation.findNavController(view).navigate(action);
+            }
         });
     }
 

@@ -41,5 +41,8 @@
                 android:name="id"
                 app:argType="integer"/>
         </action>
+        <action
+            android:id="@+id/action_arbreFragment_to_ficheAnimalFragment"
+            app:destination="@id/ficheAnimalFragment" />
     </fragment>
 </navigation>

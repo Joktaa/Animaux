@@ -11,7 +11,6 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,6 +23,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
@@ -101,7 +101,7 @@ public class AnimalsListFragment extends Fragment {
         setHasOptionsMenu(true);
 
 
-        Button button = view.findViewById(R.id.button);
+        FloatingActionButton button = view.findViewById(R.id.button_tree);
         button.setOnClickListener((v) -> {
             NavDirections action = AnimalsListFragmentDirections.actionAnimalsListFragmentToArbreFragment(0);
             Navigation.findNavController(view).navigate(action);

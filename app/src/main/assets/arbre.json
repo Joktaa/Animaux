@@ -3,7 +3,7 @@
     {
       "id": 0,
       "nom": "Métazoaires",
-      "prec": null,
+      "prec": -1,
       "valeurs": [
         {
           "nom": "Porifères",
@@ -158,7 +158,7 @@
         {
           "nom": "Céphalocordés",
           "description": "",
-          "photo": "_arbre_recherche",
+          "photo": "_arbre_cephalocordes",
           "suivant": 17
         },
         {

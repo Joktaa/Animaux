@@ -25,6 +25,12 @@ public interface AnimalDAO {
             "WHERE a_id = :id")
     LiveData<Animal> getAnimalById(Long id);
 
+    @Query("SELECT * FROM animal " +
+            "WHERE embranchement LIKE :arbre " +
+            "OR sous_embranchement LIKE :arbre " +
+            "OR ordre LIKE :arbre")
+    LiveData<List<Animal>> getAnimalsByArbre(String arbre);
+
     @Query("DELETE FROM animal " +
             "WHERE a_id = :id")
     void deleteById(Long id);
