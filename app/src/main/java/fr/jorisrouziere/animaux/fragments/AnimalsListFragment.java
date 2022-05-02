@@ -96,26 +96,29 @@ public class AnimalsListFragment extends Fragment {
                 var ref = new Object() {
                     boolean deleted = true;
                 };
-                Repository repository = new Repository(getContext());
-                List<Animal> animaux = adapter.getCurrentList();
-                int position = viewHolder.getAdapterPosition();
-                Animal deletedAnimal = animaux.get(position);
-                repository.deleteById(deletedAnimal.getA_id());
-                adapter.notifyItemRemoved(position);
-                Snackbar.make(view, deletedAnimal.getNom_commun(), Snackbar.LENGTH_LONG).setAction("Annuler", v -> {
-                    repository.insertOneAnimal(deletedAnimal);
-                    adapter.notifyItemInserted(position);
-                    ref.deleted = false;
-                }).addCallback(new Snackbar.Callback() {
-                    @Override
-                    public void onDismissed(Snackbar transientBottomBar, int event) {
-                        super.onDismissed(transientBottomBar, event);
-                        System.out.println();
-                        if (ref.deleted) {
-                            ApiUtils.deleteAnimal(deletedAnimal.getA_id());
+                firebaseAuth = FirebaseAuth.getInstance();
+                if (CheckUser()){
+                    Repository repository = new Repository(getContext());
+                    List<Animal> animaux = adapter.getCurrentList();
+                    int position = viewHolder.getAdapterPosition();
+                    Animal deletedAnimal = animaux.get(position);
+                    repository.deleteById(deletedAnimal.getA_id());
+                    adapter.notifyItemRemoved(position);
+                    Snackbar.make(view, deletedAnimal.getNom_commun(), Snackbar.LENGTH_LONG).setAction("Annuler", v -> {
+                        repository.insertOneAnimal(deletedAnimal);
+                        adapter.notifyItemInserted(position);
+                        ref.deleted = false;
+                    }).addCallback(new Snackbar.Callback() {
+                        @Override
+                        public void onDismissed(Snackbar transientBottomBar, int event) {
+                            super.onDismissed(transientBottomBar, event);
+                            System.out.println();
+                            if (ref.deleted) {
+                                ApiUtils.deleteAnimal(deletedAnimal.getA_id());
+                            }
                         }
-                    }
-                }).show();
+                    }).show();
+                }
             }
         }).attachToRecyclerView(recyclerView);
         setHasOptionsMenu(true);
