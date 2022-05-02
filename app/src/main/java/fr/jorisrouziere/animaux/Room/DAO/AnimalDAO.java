@@ -5,6 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -17,6 +18,9 @@ public interface AnimalDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertOne(Animal animal);
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    void update(Animal animal);
 
     @Query("SELECT * FROM animal")
     LiveData<List<Animal>> getAnimals();
@@ -37,4 +41,5 @@ public interface AnimalDAO {
 
     @Query("DELETE FROM animal")
     void deleteAll();
+
 }

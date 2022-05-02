@@ -14,4 +14,9 @@
     <string name="fiche_reproductions">Reproductions :</string>
     <string name="fiche_geographie">Geographie :</string>
     <string name="fiche_content_description_image">Image de l\'animal</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="veuillez_saisir_le_nom_de_l_animal">Veuillez saisir le nom de l\'animal</string>
+    <string name="nom_animal">Nom animal :</string>
+    <string name="nom_image">Nom image :</string>
 </resources>

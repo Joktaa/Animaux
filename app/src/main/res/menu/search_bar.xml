@@ -8,4 +8,13 @@
         app:showAsAction="ifRoom|collapseActionView"
         app:actionViewClass="androidx.appcompat.widget.SearchView"/>
         />
+    <item
+        android:id="@+id/action_connexion"
+        android:title="Connexion"
+        />
+
+    <item
+        android:id="@+id/action_logout"
+        android:title="Déconnexion"
+        />
 </menu>

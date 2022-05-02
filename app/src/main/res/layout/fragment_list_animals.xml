@@ -19,4 +19,12 @@
         android:layout_margin="32dp"
         android:src="@drawable/ic_tree" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_add_animal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="32dp"
+        android:src="@drawable/ic_add" />
+
 </FrameLayout>

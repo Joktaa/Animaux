@@ -23,7 +23,7 @@ import okhttp3.Response;
 
 public class API {
 
-    private static final String BASE_URL = "http://10.0.2.2:8888/api";
+    private static final String BASE_URL = "https://animaux-api.herokuapp.com/api";
     private static final MediaType JSON_MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
 
     private static API sAPI;
@@ -58,6 +58,10 @@ public class API {
         return mHttpClient.newCall(buildDelete(path)).execute();
     }
 
+    private void putAsynchronous(String path, RequestBody body, Callback callback) {
+        mHttpClient.newCall(buildPut(path, body)).enqueue(callback);
+    }
+
     private Request buildGet(String path) {
         return new Request
                 .Builder()
@@ -72,6 +76,15 @@ public class API {
                 .post(body)
                 .build();
     }
+
+    private Request buildPut(String path, RequestBody body) {
+        return new Request
+                .Builder()
+                .url(String.format("%s%s", BASE_URL, path))
+                .put(body)
+                .build();
+    }
+
 
     private Request buildDelete(String path) {
         return new Request
@@ -130,6 +143,12 @@ public class API {
 
     public void postAnimal(Animal animal, Callback callback) {
         postAsynchronous(String.format(Locale.FRANCE, "/animal/"),
+                RequestBody.create(new Gson().toJson(animal), JSON_MEDIA_TYPE),
+                callback);
+    }
+
+    public void putAnimal(Animal animal, Callback callback) {
+        putAsynchronous(String.format(Locale.FRANCE, "/animal/%d", animal.getA_id()),
                 RequestBody.create(new Gson().toJson(animal), JSON_MEDIA_TYPE),
                 callback);
     }

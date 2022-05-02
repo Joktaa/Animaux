@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "737059500535",
+    "project_id": "android-animaux",
+    "storage_bucket": "android-animaux.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737059500535:android:31712de75da9831a547ef2",
+        "android_client_info": {
+          "package_name": "fr.jorisrouziere.animaux"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "737059500535-h3oeoln4b15fa14dajpo4hg4rch9hdj6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.jorisrouziere.animaux",
+            "certificate_hash": "90caa2501b3c852c64d7531dd34de8afbc8e537c"
+          }
+        },
+        {
+          "client_id": "737059500535-5cgjo2clpi9s2231lek1ib2jbofmf9bh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQAOwTBlodvOx_xfKtc69EZNrYhiX6qVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "737059500535-5cgjo2clpi9s2231lek1ib2jbofmf9bh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -17,24 +18,92 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonSaveAnimal"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:id="@+id/titre"
+                android:layout_width="377dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="175dp"
+                android:layout_marginEnd="178dp"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewNomAnimal"
+                android:layout_width="143dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/nom_animal"
+                android:textAlignment="textStart"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titre" />
+
+            <EditText
+                android:id="@+id/descriptionNom"
+                android:layout_width="392dp"
+                android:layout_height="67dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/veuillez_saisir_le_nom_de_l_animal"
+                android:inputType="textMultiLine"
+                android:textAlignment="textStart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNomAnimal" />
+
+            <TextView
+                android:id="@+id/textViewNomImage"
+                android:layout_width="143dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/nom_image"
+                android:textAlignment="textStart"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/descriptionNom" />
+
+            <EditText
+                android:id="@+id/descriptionNomImage"
+                android:layout_width="392dp"
+                android:layout_height="67dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:contentDescription="Veuillez saisir le nom de l'image de l'animal"
+                android:inputType="textMultiLine"
+                android:textAlignment="textStart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNomImage" />
+
+            <EditText
                 android:id="@+id/descriptionOrdre"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:contentDescription="Veuillez saisir l'ordre"
+                android:inputType="textMultiLine"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewOrdre" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewOrdre"
+                tools:ignore="EditableContentDescCheck" />
 
             <TextView
                 android:id="@+id/textViewOrdre"
@@ -49,15 +118,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionSousEmbranchement" />
 
-            <TextView
+            <EditText
                 android:id="@+id/descriptionSousEmbranchement"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:contentDescription="Veuillez saisir l'ordre"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewSousEmbranchement" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewSousEmbranchement"
+                tools:ignore="EditableContentDescCheck" />
 
             <TextView
                 android:id="@+id/textViewSousEmbranchement"
@@ -72,15 +143,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionEmbranchement" />
 
-            <TextView
+            <EditText
                 android:id="@+id/descriptionEmbranchement"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:contentDescription="Veuillez saisir les Embranchements"
+                android:inputType="textMultiLine"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewEmbranchement" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewEmbranchement"
+                tools:ignore="EditableContentDescCheck" />
 
             <TextView
                 android:id="@+id/textViewEmbranchement"
@@ -95,15 +169,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionEspece" />
 
-            <TextView
+            <EditText
                 android:id="@+id/descriptionEspece"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:contentDescription="Veuillez saisir les especes"
+                android:inputType="textMultiLine"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewEspece" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewEspece"
+                tools:ignore="EditableContentDescCheck" />
 
             <TextView
                 android:id="@+id/textViewEspece"
@@ -118,12 +195,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionGenre" />
 
-            <TextView
+            <EditText
                 android:id="@+id/descriptionGenre"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:contentDescription="Veuillez saisir le genre"
+                android:inputType="textMultiLine"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewGenre" />
@@ -139,43 +218,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textNomAnimal" />
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
-                android:layout_width="409dp"
-                android:layout_height="161dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.626"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.003">
-
-                <ImageView
-                    android:id="@+id/imageAnimal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/coelacanthe"
-                    android:contentDescription="@string/fiche_content_description_image" />
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/textNomAnimal"
-                android:layout_width="201dp"
-                android:layout_height="33dp"
-                android:layout_marginStart="175dp"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="178dp"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:textAllCaps="false"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionNomImage" />
 
             <TextView
                 android:id="@+id/textViewUicn"
@@ -190,15 +233,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionOrdre" />
 
-            <TextView
+            <EditText
                 android:id="@+id/descriptionUicn"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:contentDescription="Veuillez saisir les Uicn"
+                android:inputType="textMultiLine"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewUicn" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewUicn"
+                tools:ignore="EditableContentDescCheck" />
 
             <TextView
                 android:id="@+id/textViewPhysiques"
@@ -213,15 +259,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionUicn" />
 
-            <TextView
+            <EditText
                 android:id="@+id/descriptionPhysiques"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:contentDescription="Veuillez saisir la description physique"
+                android:inputType="textMultiLine"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewPhysiques" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewPhysiques"
+                tools:ignore="EditableContentDescCheck" />
 
             <TextView
                 android:id="@+id/textViewSexes"
@@ -236,15 +285,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionPhysiques" />
 
-            <TextView
+            <EditText
                 android:id="@+id/descriptionSexes"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:contentDescription="Veuillez saisir le sex de l'anilaml"
+                android:inputType="textMultiLine"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewSexes" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewSexes"
+                tools:ignore="EditableContentDescCheck" />
 
             <TextView
                 android:id="@+id/textViewVies"
@@ -259,15 +311,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionSexes" />
 
-            <TextView
+            <EditText
                 android:id="@+id/descriptionVies"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:contentDescription="Veuillez saisir la durée de vie"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewVies" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewVies"
+                tools:ignore="EditableContentDescCheck" />
 
             <TextView
                 android:id="@+id/textViewReproductions"
@@ -275,6 +329,7 @@
                 android:layout_height="31dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
+                android:inputType="textMultiLine"
                 android:text="@string/fiche_reproductions"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
@@ -282,15 +337,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionVies" />
 
-            <TextView
+            <EditText
                 android:id="@+id/descriptionReproductions"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:contentDescription="Veuillez saisir les reproductions"
+                android:inputType="textMultiLine"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewReproductions" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewReproductions"
+                tools:ignore="EditableContentDescCheck" />
 
             <TextView
                 android:id="@+id/textViewGeographie"
@@ -305,16 +363,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionReproductions" />
 
-            <TextView
+            <EditText
                 android:id="@+id/descriptionGeographie"
                 android:layout_width="392dp"
                 android:layout_height="67dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:contentDescription="Veuillez saisir les lieux où se trouvent l'animal"
+                android:inputType="textMultiLine"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewGeographie" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewGeographie"
+                tools:ignore="EditableContentDescCheck" />
+
+            <Button
+                android:id="@+id/buttonSaveAnimal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/descriptionGeographie"
+                tools:text="Enregistrer" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

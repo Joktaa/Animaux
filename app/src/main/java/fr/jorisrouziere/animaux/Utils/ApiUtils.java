@@ -60,4 +60,22 @@ public class ApiUtils {
             });
         }).start();
     }
+
+    public static void putAnimal(Context applicationContext, Animal animal) {
+        Repository repository = new Repository(applicationContext);
+
+        new Thread(() -> {
+            API api = API.getInstance();
+            api.putAnimal(animal, new Callback() {
+                @Override
+                public void onResponse(@NonNull Call call, @NonNull Response response) {
+                    repository.updateOneAnimal(animal);
+                }
+
+                @Override
+                public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                }
+            });
+        }).start();
+    }
 }
