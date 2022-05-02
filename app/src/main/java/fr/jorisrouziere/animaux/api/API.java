@@ -15,11 +15,14 @@ import javax.net.ssl.HttpsURLConnection;
 import fr.jorisrouziere.animaux.Room.models.Animal;
 import fr.jorisrouziere.animaux.Utils.JsonIOUtils;
 import okhttp3.Callback;
+import okhttp3.Headers;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.internal.http.HttpHeaders;
+import okhttp3.internal.http2.Header;
 
 public class API {
 
@@ -50,16 +53,16 @@ public class API {
         return mHttpClient.newCall(buildGet(path)).execute();
     }
 
-    private void postAsynchronous(String path, RequestBody body, Callback callback) {
-        mHttpClient.newCall(buildPost(path, body)).enqueue(callback);
+    private void postAsynchronous(String path, RequestBody body, Callback callback, long id) {
+        mHttpClient.newCall(buildPost(path, body, id)).enqueue(callback);
     }
 
-    private Response deleteSynchronous(String path) throws IOException {
-        return mHttpClient.newCall(buildDelete(path)).execute();
+    private Response deleteSynchronous(String path, long id) throws IOException {
+        return mHttpClient.newCall(buildDelete(path, id)).execute();
     }
 
-    private void putAsynchronous(String path, RequestBody body, Callback callback) {
-        mHttpClient.newCall(buildPut(path, body)).enqueue(callback);
+    private void putAsynchronous(String path, RequestBody body, Callback callback, long id) {
+        mHttpClient.newCall(buildPut(path, body, id)).enqueue(callback);
     }
 
     private Request buildGet(String path) {
@@ -69,27 +72,31 @@ public class API {
                 .build();
     }
 
-    private Request buildPost(String path, RequestBody body) {
+    private Request buildPost(String path, RequestBody body, long id) {
         return new Request
                 .Builder()
                 .url(String.format("%s%s", BASE_URL, path))
+                .addHeader("Uid", String.valueOf(id))
                 .post(body)
                 .build();
     }
 
-    private Request buildPut(String path, RequestBody body) {
+    private Request buildPut(String path, RequestBody body, long id) {
+
         return new Request
                 .Builder()
                 .url(String.format("%s%s", BASE_URL, path))
+                .addHeader("Uid", String.valueOf(id))
                 .put(body)
                 .build();
     }
 
 
-    private Request buildDelete(String path) {
+    private Request buildDelete(String path, long id) {
         return new Request
                 .Builder()
                 .url(String.format("%s%s", BASE_URL, path))
+                .addHeader("Uid", String.valueOf(id))
                 .delete()
                 .build();
     }
@@ -136,7 +143,7 @@ public class API {
     }
 
     public boolean deleteAnimal(Long id) throws IOException {
-        Response response = deleteSynchronous(String.format(Locale.FRANCE, "/animal/%d", id));
+        Response response = deleteSynchronous(String.format(Locale.FRANCE, "/animal/%d", id),id);
 
         return HttpsURLConnection.HTTP_OK == response.code();
     }
@@ -144,12 +151,12 @@ public class API {
     public void postAnimal(Animal animal, Callback callback) {
         postAsynchronous(String.format(Locale.FRANCE, "/animal/"),
                 RequestBody.create(new Gson().toJson(animal), JSON_MEDIA_TYPE),
-                callback);
+                callback, animal.getA_id());
     }
 
     public void putAnimal(Animal animal, Callback callback) {
         putAsynchronous(String.format(Locale.FRANCE, "/animal/%d", animal.getA_id()),
                 RequestBody.create(new Gson().toJson(animal), JSON_MEDIA_TYPE),
-                callback);
+                callback, animal.getA_id());
     }
 }
