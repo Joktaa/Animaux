@@ -1,5 +1,7 @@
 package fr.jorisrouziere.animaux.api;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -31,6 +33,8 @@ public class API {
 
     private static API sAPI;
     private final OkHttpClient mHttpClient;
+    private FirebaseAuth firebaseAuth;
+
 
     private API() {
         mHttpClient = new OkHttpClient
@@ -53,15 +57,15 @@ public class API {
         return mHttpClient.newCall(buildGet(path)).execute();
     }
 
-    private void postAsynchronous(String path, RequestBody body, Callback callback, long id) {
+    private void postAsynchronous(String path, RequestBody body, Callback callback, String id) {
         mHttpClient.newCall(buildPost(path, body, id)).enqueue(callback);
     }
 
-    private Response deleteSynchronous(String path, long id) throws IOException {
+    private Response deleteSynchronous(String path, String id) throws IOException {
         return mHttpClient.newCall(buildDelete(path, id)).execute();
     }
 
-    private void putAsynchronous(String path, RequestBody body, Callback callback, long id) {
+    private void putAsynchronous(String path, RequestBody body, Callback callback, String id) {
         mHttpClient.newCall(buildPut(path, body, id)).enqueue(callback);
     }
 
@@ -72,7 +76,7 @@ public class API {
                 .build();
     }
 
-    private Request buildPost(String path, RequestBody body, long id) {
+    private Request buildPost(String path, RequestBody body, String id) {
         return new Request
                 .Builder()
                 .url(String.format("%s%s", BASE_URL, path))
@@ -81,7 +85,7 @@ public class API {
                 .build();
     }
 
-    private Request buildPut(String path, RequestBody body, long id) {
+    private Request buildPut(String path, RequestBody body, String id) {
 
         return new Request
                 .Builder()
@@ -92,7 +96,7 @@ public class API {
     }
 
 
-    private Request buildDelete(String path, long id) {
+    private Request buildDelete(String path, String id) {
         return new Request
                 .Builder()
                 .url(String.format("%s%s", BASE_URL, path))
@@ -143,20 +147,47 @@ public class API {
     }
 
     public boolean deleteAnimal(Long id) throws IOException {
-        Response response = deleteSynchronous(String.format(Locale.FRANCE, "/animal/%d", id),id);
+        String idUser = "0";
+        firebaseAuth = FirebaseAuth.getInstance();
+        if (CheckUser()){
+            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+            idUser = firebaseUser.getUid();
+        }
+        Response response = deleteSynchronous(String.format(Locale.FRANCE, "/animal/%d", id),idUser);
 
         return HttpsURLConnection.HTTP_OK == response.code();
     }
 
     public void postAnimal(Animal animal, Callback callback) {
+        String id = "0";
+        firebaseAuth = FirebaseAuth.getInstance();
+        if (CheckUser()){
+            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+            id = firebaseUser.getUid();
+        }
         postAsynchronous(String.format(Locale.FRANCE, "/animal/"),
                 RequestBody.create(new Gson().toJson(animal), JSON_MEDIA_TYPE),
-                callback, animal.getA_id());
+                callback, id);
     }
 
     public void putAnimal(Animal animal, Callback callback) {
+        String id = "0";
+        firebaseAuth = FirebaseAuth.getInstance();
+        if (CheckUser()){
+            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+            id = firebaseUser.getUid();
+        }
         putAsynchronous(String.format(Locale.FRANCE, "/animal/%d", animal.getA_id()),
                 RequestBody.create(new Gson().toJson(animal), JSON_MEDIA_TYPE),
-                callback, animal.getA_id());
+                callback, id);
+    }
+
+    private boolean CheckUser() {
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        boolean connected = true;
+        if (firebaseUser == null){
+            connected = false;
+        }
+        return connected;
     }
 }

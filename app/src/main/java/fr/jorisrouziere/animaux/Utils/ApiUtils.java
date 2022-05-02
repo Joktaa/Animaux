@@ -1,6 +1,7 @@
 package fr.jorisrouziere.animaux.Utils;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -70,6 +71,7 @@ public class ApiUtils {
                 @Override
                 public void onResponse(@NonNull Call call, @NonNull Response response) {
                     repository.updateOneAnimal(animal);
+
                 }
 
                 @Override
