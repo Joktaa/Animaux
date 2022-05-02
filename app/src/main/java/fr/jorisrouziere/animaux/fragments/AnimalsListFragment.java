@@ -123,8 +123,17 @@ public class AnimalsListFragment extends Fragment {
 
         FloatingActionButton button = view.findViewById(R.id.button_tree);
         button.setOnClickListener((v) -> {
-            NavDirections action = AnimalsListFragmentDirections.actionAnimalsListFragmentToArbreFragment(0);
+            NavDirections action = (NavDirections) AnimalsListFragmentDirections.actionAnimalsListFragmentToArbreFragment(0);
             Navigation.findNavController(view).navigate(action);
+        });
+
+        FloatingActionButton btnAddAnimal = view.findViewById(R.id.button_add_animal);
+        NavController navController = NavHostFragment.findNavController(this);
+        btnAddAnimal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_animalsListFragment_to_createUpdateAnimal);
+            }
         });
 
         return view;
